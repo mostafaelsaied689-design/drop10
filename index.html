@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DROP 10 Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Montserrat:wght@400;600;800&display=swap');
+
+    body {
+      background-color: #050505;
+      color: #f3f4f6;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+    }
+
+    .perspective-container {
+      perspective: 1000px;
+    }
+
+    .rotate-3d-logo {
+      transform-style: preserve-3d;
+      animation: rotateY3D 8s infinite linear;
+    }
+
+    .rotate-3d-logo:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes rotateY3D {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+
+    .gold-text {
+      background: linear-gradient(135deg, #fef08a 0%, #eab308 50%, #ca8a04 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+    }
+
+    .product-card {
+      background: #0f0f0f;
+      border: 1px solid #1a1a1a;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .product-card:hover {
+      border-color: #eab308;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(234, 179, 8, 0.15);
+    }
+  </style>
+</head>
+<body class="pb-12">
+
+  <!-- TOP BAR & 3D LOGO -->
+  <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-yellow-500/20 py-4 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col items-center justify-center relative">
+      <div class="absolute right-2 top-2 text-yellow-500 cursor-pointer">
+        <i class="fa-solid fa-bag-shopping text-xl"></i>
+      </div>
+
+      <div class="perspective-container my-1 cursor-pointer">
+        <div class="rotate-3d-logo flex flex-col items-center justify-center">
+          <h1 class="brand-title text-3xl md:text-5xl font-black tracking-widest gold-text">
+            DROP 10
+          </h1>
+          <p class="text-[10px] md:text-xs tracking-[0.3em] text-gray-400 font-semibold uppercase mt-0.5">
+            BY MOSTAFA SALAMA
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CATALOG -->
+  <main class="max-w-5xl mx-auto px-3 pt-6">
+    
+    <!-- CATEGORY FILTER BUTTONS -->
+    <div class="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-4 text-xs tracking-wider" id="filter-buttons">
+      <button data-filter="all" class="filter-btn bg-yellow-500 text-black px-4 py-1.5 rounded-full font-bold uppercase transition">ALL</button>
+      <button data-filter="tshirts" class="filter-btn bg-zinc-900 text-gray-300 hover:text-yellow-400 px-4 py-1.5 rounded-full font-semibold border border-zinc-800 uppercase whitespace-nowrap transition">T-SHIRTS</button>
+      <button data-filter="jeans" class="filter-btn bg-zinc-900 text-gray-300 hover:text-yellow-400 px-4 py-1.5 rounded-full font-semibold border border-zinc-800 uppercase whitespace-nowrap transition">JEANS</button>
+      <button data-filter="hoodies" class="filter-btn bg-zinc-900 text-gray-300 hover:text-yellow-400 px-4 py-1.5 rounded-full font-semibold border border-zinc-800 uppercase whitespace-nowrap transition">HOODIES</button>
+      <button data-filter="jackets" class="filter-btn bg-zinc-900 text-gray-300 hover:text-yellow-400 px-4 py-1.5 rounded-full font-semibold border border-zinc-800 uppercase whitespace-nowrap transition">JACKETS</button>
+    </div>
+
+    <!-- PRODUCTS GRID (لاحظ كل منتج معاه خانة الـ data-category بتاعته) -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6" id="products-grid">
+
+      <!-- ITEM 1: T-Shirt -->
+      <div class="product-card rounded-lg overflow-hidden flex flex-col justify-between" data-category="tshirts">
+        <div class="relative aspect-[4/5] bg-zinc-900 overflow-hidden">
+          <img src="black.jpg" onerror="this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop'" alt="Black Round Neck Tee" class="w-full h-full object-cover">
+        </div>
+        <div class="p-3 text-center flex flex-col justify-between flex-grow">
+          <div>
+            <h3 class="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-100 line-clamp-1">BLACK ROUND NECK TEE</h3>
+            <p class="text-yellow-400 font-extrabold text-sm md:text-base my-1">LE 450.00</p>
+          </div>
+          <a href="https://wa.me/201000000000?text=Hello,%20I%20want%20to%20order%20Black%20Round%20Neck%20Tee" target="_blank" class="mt-2 block w-full bg-yellow-500 hover:bg-yellow-400 text-black font-black text-[11px] md:text-xs py-2 rounded uppercase tracking-wider transition">
+            ORDER VIA WHATSAPP
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 2: Jeans -->
+      <div class="product-card rounded-lg overflow-hidden flex flex-col justify-between" data-category="jeans">
+        <div class="relative aspect-[4/5] bg-zinc-900 overflow-hidden">
+          <img src="olive.jpg" onerror="this.src='https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&auto=format&fit=crop'" alt="Classic Blue Jeans" class="w-full h-full object-cover">
+        </div>
+        <div class="p-3 text-center flex flex-col justify-between flex-grow">
+          <div>
+            <h3 class="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-100 line-clamp-1">CLASSIC BLUE JEANS</h3>
+            <p class="text-yellow-400 font-extrabold text-sm md:text-base my-1">LE 750.00</p>
+          </div>
+          <a href="https://wa.me/201000000000?text=Hello,%20I%20want%20to%20order%20Classic%20Blue%20Jeans" target="_blank" class="mt-2 block w-full bg-yellow-500 hover:bg-yellow-400 text-black font-black text-[11px] md:text-xs py-2 rounded uppercase tracking-wider transition">
+            ORDER VIA WHATSAPP
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 3: Hoodie -->
+      <div class="product-card rounded-lg overflow-hidden flex flex-col justify-between" data-category="hoodies">
+        <div class="relative aspect-[4/5] bg-zinc-900 overflow-hidden">
+          <img src="ninewest.jpg" onerror="this.src='https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&auto=format&fit=crop'" alt="Luxury Black Hoodie" class="w-full h-full object-cover">
+        </div>
+        <div class="p-3 text-center flex flex-col justify-between flex-grow">
+          <div>
+            <h3 class="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-100 line-clamp-1">LUXURY BLACK HOODIE</h3>
+            <p class="text-yellow-400 font-extrabold text-sm md:text-base my-1">LE 950.00</p>
+          </div>
+          <a href="https://wa.me/201000000000?text=Hello,%20I%20want%20to%20order%20Luxury%20Black%20Hoodie" target="_blank" class="mt-2 block w-full bg-yellow-500 hover:bg-yellow-400 text-black font-black text-[11px] md:text-xs py-2 rounded uppercase tracking-wider transition">
+            ORDER VIA WHATSAPP
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 4: Jacket -->
+      <div class="product-card rounded-lg overflow-hidden flex flex-col justify-between" data-category="jackets">
+        <div class="relative aspect-[4/5] bg-zinc-900 overflow-hidden">
+          <img src="teal.jpg" onerror="this.src='https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop'" alt="Dark Leather Jacket" class="w-full h-full object-cover">
+        </div>
+        <div class="p-3 text-center flex flex-col justify-between flex-grow">
+          <div>
+            <h3 class="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-100 line-clamp-1">DARK LEATHER JACKET</h3>
+            <p class="text-yellow-400 font-extrabold text-sm md:text-base my-1">LE 1200.00</p>
+          </div>
+          <a href="https://wa.me/201000000000?text=Hello,%20I%20want%20to%20order%20Dark%20Leather%20Jackets" target="_blank" class="mt-2 block w-full bg-yellow-500 hover:bg-yellow-400 text-black font-black text-[11px] md:text-xs py-2 rounded uppercase tracking-wider transition">
+            ORDER VIA WHATSAPP
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="mt-16 text-center border-t border-zinc-900 pt-8">
+    <p class="text-xs text-gray-500 tracking-widest uppercase">
+      &copy; 2026 DROP 10 STORE BY MOSTAFA SALAMA. ALL RIGHTS RESERVED.
+    </p>
+  </footer>
+
+  <!-- JAVASCRIPT TO MAKE CATEGORY FILTER WORK -->
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Active styling for buttons
+        filterButtons.forEach(btn => {
+          btn.classList.remove('bg-yellow-500', 'text-black', 'font-bold');
+          btn.classList.add('bg-zinc-900', 'text-gray-300', 'font-semibold');
+        });
+        button.classList.remove('bg-zinc-900', 'text-gray-300', 'font-semibold');
+        button.classList.add('bg-yellow-500', 'text-black', 'font-bold');
+
+        // Filter products
+        const filterValue = button.getAttribute('data-filter');
+        
+        productCards.forEach(card => {
+          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
